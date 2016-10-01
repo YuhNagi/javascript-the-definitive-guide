@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8' />
+	<title>flexisum函数</title>
+<style>
+
+</style>
+
+<script>
+window.onload = function(){
+/*	function copyArray(from,from_start,to,to_start,len){
+		// console.log( from + ' ' + from_start + ' ' + to + ' ' + to_start + ' ' + len );
+		for(var i=0;i<len;i++){
+			if( to.indexOf(from[i]) ==-1 ){
+				// from[i] = to[i];
+				to.push(from[i]);
+
+			}
+		}
+		console.log(to);		
+	}
+
+	var a = [1,2,3,4,5];
+	var b = ['a','b'];
+	var a ={arr1: a, from_start: 0, arr2: b, to_start: 0, length:a.length };
+	copyArray(a.arr1,a.from_start,a.arr2,a.to_start,a.length);*/
+
+	// console.log( Boolean(-1) );
+
+var a =[1,2,3,4,5];
+var str = 'abc';
+var c = function(){};
+var d = '100';
+
+// debugger;
+// console.log( flexisum(a,d,str,c) );
+console.log( flexisum(a,d,undefined) );
+
+function flexisum(a){
+    var total = 0;
+    // console.log(arguments.length);
+
+    for(var i=0;i<arguments.length;i++){
+    	var ele = arguments[i]; //循环每一个参数
+    	var n = null;
+    	var type = Object.prototype.toString;
+
+		if(ele == undefined){ continue;}
+    	else if( type.call( ele) === "[object Array]" ){ n = flexisum.apply(this,ele); } 
+    	 // ------如果是数组，就再调用此函数，循环出数组每个值，从而累加
+    	else if( type.call(ele) === "[object Function]" ){ n = Number( ele() ); }  
+    	 //如果是函数，就拿到函数的返回值转换成数字
+
+    	else{ n = Number(ele); }  //其它类型的话直接转
+
+    	if( isNaN(n) ){ throw Error( ele + " can't convert to number") }
+    	// if( isNaN(n) ){ console.log("error"); }
+
+    	total += n;
+    }
+
+    	return total;
+}
+
+	// var a = [1,2,3,4,5];
+	// console.log(Object.prototype.toString.call(a).slice(8,-1) );   // =>[Object Array]
+	// 调用Object.prototype上的原生toString()方法判断数据类型
+
+};
+</script>
+</head>
+<body>
+</body>
+</html>

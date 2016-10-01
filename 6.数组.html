@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8' />
+	<title>数组</title>
+<style>
+
+</style>
+
+<script>
+// 'use strict'
+window.onload = function(){
+
+var arr = [1,2,,undefined,5,null];
+
+/*for(var i=0;i<arr.length;i++){
+  if(!arr[i]){ continue; }
+  console.log(i);  // 0,1,4
+}*/
+
+// delete arr[1];
+/*for(var i=0;i<arr.length;i++){
+  if(arr[i] === undefined ){ continue; }
+  console.log(i);  // 0,1,4,5
+}*/
+
+
+/*for(var i=0;i<arr.length;i++){
+  if(! (i in arr) ){ continue; }
+  console.log(i);  // 0,1,4
+}*/
+
+
+/*var arryAll = [];  
+arryAll.push(1);  
+arryAll.push(2);  
+arryAll.push(3);  
+arryAll.push(4);  
+
+//匿名方式
+arryAll.forEach(function(e){  
+    alert(e);  
+}) */
+
+
+/*arr.forEach(function(x){
+  console.log(x);
+}) */
+
+
+
+/*var table = new Array(10);
+for(var i=0;i<table.length;i++){
+  table[i] = new Array(10);
+}
+
+for(var row =0;row<table.length;row++){
+  for(var col=0;col<table[row].length;col++){
+    table[row][col] = row*col;
+  }
+}
+
+console.log(table[5][7]);*/
+
+
+//----------------------sort------------------------------
+
+/*var arr1 = [22,4,100,333];
+
+arr1.sort(function(a,b){
+  return a-b;   //22-4=>true, 交换位置
+});
+console.log(arr1);*/
+
+
+/*var arr2 =[];
+console.log(arr2.push(1,2));  //2
+console.log(arr2.pop());
+console.log(arr2.push(3));
+console.log(arr2.push(4));
+console.log(arr2.pop());*/
+
+
+
+/*var arr3 = [1,2,3,4,5,6]
+var arr4 = ['a','b']
+
+function foreach(a,f,t){
+  try{ a.forEach(f,t); }
+  catch(e){
+    if(e === foreach.break){ return; }
+    else{ throw e;}
+  }
+}
+foreach.break = new Error('停止循环');
+
+console.log(foreach(arr3,function(val){
+    console.log(val);
+    return this;
+    // a.call(arr4);
+},[3])
+);*/
+
+
+/*
+var arr3 = [1,2,3,4,5,6];
+var arr4 = [1,2,];
+
+console.log(arr3.every(function(x){ return x<5; }));
+console.log(arr3.some(function(x){ return x>1 }));
+console.log(arr4.reduce(function(x,y){  return x+y;}, 2) );
+// 2+1  + 1+2
+// console.log();
+
+// alert(1);
+var sum =0;
+var num =0;
+arr3.forEach(function(value){  sum +=value;})
+console.log( sum );
+arr4.map( function(value){ num += value; } );
+console.log( num );*/
+
+
+var arr5 = [3,2,1,1,2,4,1];
+
+function search(a,x){
+  var results = [];
+  var len = a.length;
+  var pos = 0;
+  while(pos < len){
+    pos = a.indexOf(x,pos);
+    if(pos === -1){ break;}
+    results.push(pos);
+    pos ++;
+  }
+  return results;
+}
+
+  console.log(search(arr5,1) );
+
+
+
+
+
+};
+</script>
+</head>
+<body>
+
+</body>
+</html>

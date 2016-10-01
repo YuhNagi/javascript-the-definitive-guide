@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8' />
+	<title>函数自定义属性，命名空间函数</title>
+<style>
+
+</style>
+
+<script>
+window.onload = function(){
+
+/*function factorial(n){
+	if( isFinite(n) && n>0 && n == Math.round(n) ){ //无穷大，四舍五入
+		if(!(n in factorial) ){
+			factorial[n] = n*factorial(n-1);
+			return factorial[n];
+		}
+		else{ return NaN; }
+	} 
+}
+
+	factorial[1] = 1;
+
+	console.log( factorial(3) );
+*/
+
+/*	function fun2(x) {
+    if(isFinite(x) && x>0 && x==Math.round(x)) {
+        if(!(x in fun2))  //如果没有混成结果
+            fun2[x] = x*fun2(x-1)  //计算结果并缓存
+        return fun2[x]; //返回缓存结果
+    }
+    else return NaN;
+}
+fun2[1] = 1;
+console.log(fun2(3)); //6，火狐下测试的，fun2是计算阶乘的
+*/
+
+
+
+//----------------------------extend()函数--------------------------------------------
+
+/**/var extend = ( function(){   //使用匿名函数，并把其返回值赋值给一个变量
+
+	for( var p in {toString: null} ){  
+	//{toString: null}=》为一个对象，使用for in检测IE下是存在Bug,IE下不能枚举toString等内置方法
+	//如果能枚举，就往下走
+		return function extend(o){
+			for(var i=1;i<arguments.length;i++){
+		//arguments的索引也是从0开始的，所以令i=1，即第2个对象开始才是要被复制的对象
+				var source = arguments[i]; 
+				for(var prop in source) { 
+					// if(prop in o){ continue; }  //避免覆盖自有属性。
+					o[prop] = source[prop] 
+				}
+			}
+		return o;  //返回要继承的对象。
+		}
+	}
+
+	//如果是不能枚举toString属性的话，就用下面这套方法实现
+	//显式测试Object.prototype中的不可枚举的属性
+	return function patched_extend(o){
+		for(var i=1;i<arguments.length;i++){
+			var source = arguments[i];
+			
+		//1.先复制可枚举的属性
+			for(var prop in source){
+				o[prop] = source[prop];
+			}
+		
+		//2.检查如toString等特殊属性
+			for(var j=0;j<protoprops.length;j++){
+				prop = protoprops[j];
+				if( source.hasOwnProperty(prop) ){ 
+					o[prop] = source[prop];
+				 }
+			}
+		}
+		return o; //最后把复制好的对象返回出去。
+	}  //第二个方法的return到此结束
+
+//列举出需要检查的内置方法，特殊属性
+var protoprops = ['toString', 'valueOf', 'constructor', 'hasOwnProperty', 'isPrototypeOf', 'propertyIsEnumerable', 'toLocaleString']
+
+} () ) //注意，这里匿名函数结尾处不能加分号，理由暂时不明。=_=
+//匿名函数自调用的几种方式： http://www.cnblogs.com/snandy/archive/2011/02/28/1966664.html
+
+
+
+var a ={x:1, y:2, z:3, toString:'test',valueOf: 'contest'}
+var b ={x:22};
+
+console.log( extend(b,a) );
+
+
+
+};
+</script>
+</head>
+<body>
+</body>
+</html>

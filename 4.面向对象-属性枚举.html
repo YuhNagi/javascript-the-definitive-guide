@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>对象属性枚举</title>
+<script>
+window.onload = function(){
+/*function P(){}
+
+	var o = new P();
+	Object.defineProperty(o,'x',{
+		value: 'abc',
+		configurable: false,
+		writable:true
+	});
+	console.log(o.x);
+	// console.log(o.x = 1);
+	console.log(delete o.x);
+	console.log(o.x);
+	// console.log(111);
+	// alert(1);*/
+
+
+	/*var p ={
+		num : 0,
+
+		get next(){
+			return this.num++;
+		},
+
+		set next(n){
+			if(n >= this.num){
+				this.num = n;
+			}else{
+				console.log(1);
+			}
+
+			return this.num;
+		}
+	};
+*/
+
+
+	// alert(p.next);
+	// alert(p.next);
+	// alert(p.num);
+	// alert(p.get());
+	// alert(p.next(2));
+
+
+/*	var o ={x:1, y: 0};  //直接量创建的对象的原型直接指向“Object”
+	Object.prototype.z = 3;
+
+	 var p = Object.create(o);
+	// console.log(p.z);
+	// console.log(p.x+z);
+	p.y = 2;
+	console.log(p.y);
+	console.log(o.y);  //原对象o的值不受影响。
+
+	console.log(p["z"]);  //[]里面的值必须是字符串。
+}*/
+
+/*	function show(person,name,a){
+		// person[name] = a;
+		person.name = a;
+		// return person + name + ' ' + a;
+		 return person;
+	}
+	var b = {};
+	// var b = 0;
+		console.log(show(b,"nagi",22));
+		console.log(b.nagi);*/
+
+
+/*	var p1 ={a:{x:1}};
+	var p2 = p1.a;
+	// delete p1.a;
+	// console.log(p2.x);*/
+
+
+/*	var a = {x:1};
+	Object.defineProperty(a,"z",{value:3,enumerable:false,configurable:false,writable:false})
+	var b = {y:2};
+	console.log(a.hasOwnProperty("x"));
+	console.log(b.propertyIsEnumerable("y"));
+	console.log(a.propertyIsEnumerable("z"));
+	console.log(delete a.z);*/
+
+	var o = {x: undefined};
+
+/*	if(o.x != null){  //用不精确等于，就不包括=undefined的情况，仅限 = null;
+		console.log(1);
+	}else if(o.x !==null){  //用双等于，就会精确取到两种情况
+		console.log("这里的!==会匹配到null和undefined");
+	}else{
+		console.log(10001);
+	}*/
+
+
+	var p = {y:''}
+	if(p.y){
+		console.log(true);
+	}else{
+		console.log(false);
+	}
+
+}
+</script>
+</head>
+<body>
+	
+</body>
+</html>

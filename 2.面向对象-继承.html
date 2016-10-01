@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Object对象继承</title>
+<script>
+window.onload = function(){
+	function inherit(p){
+		if(p == null){
+			// throw TypeError("错了");
+			console.log('a');
+		}
+		if(Object.create){
+			return Object.create(p);
+		}
+		var t = typeof p;
+		if(t !='Object' && t != 'funtion'){
+			// throw TypeError("错了");
+			console.log('b');
+		}
+		function fn(){
+			fn.prototype = p;
+			return new fn();
+		}
+	}	
+
+	var o = {};
+	console.log(inherit(o));
+	console.log(1);
+}
+</script>
+</head>
+<body></body>
+</html>
+

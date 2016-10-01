@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>属性枚举2</title>
+<script>
+
+
+window.onload = function(){
+	
+	/*var p1 = {'name':'nagi'};
+	var p2 = {x:0, y:1, z:2};
+	Object.defineProperty(p2,'x',{value:0,enumerable:false});
+	var p3 = {age:12, x:'a'}; //会被继承来的属性x的值所覆盖
+
+	function extend(o,p){
+		for(prop in p){
+			o[prop] = p[prop]; //使用[] 会自动创建一个属性的。
+		}
+		return o;
+	}
+
+	function inhert(o,p){
+		var a = extend(p3,p1);  //空对象继承 0 的属性。
+		return extend(a,p2);
+	}
+	console.log(inhert(p1,p2));
+
+	console.log(Object.getOwnPropertyNames(p2)); //不可枚举的属性也会被找到。
+	console.log(Object.keys(p2));
+	console.log(p2.hasOwnProperty('x'));*/
+
+
+	/*var o ={
+		'x': 1,
+		'y': 2,
+
+		get next(){
+			return this.x++;
+		},
+
+		set next(n){
+			if(n>this.x){
+				// console.log(n);
+				n = this.x;
+			}else{
+				console.log(11);
+			}
+		}
+	}
+
+		console.log(o.next);
+		o.next = 3;
+		console.log(o.next);
+		console.log(Object.getOwnPropertyDescriptor(o,'x'));
+		console.log(Object.getOwnPropertyDescriptor(o,'next'));*/
+
+
+
+
+		//属性的特性的复制。
+
+	var a ={y:'aaa'};
+	var b = {x:1};
+	 // console.log(b.__proto__ == Object.prototype);
+	 Object.defineProperties(b,{
+	 	y:{value : 2, writable:false, enumerable:true},
+	 	z:{value: 3, configurable:true, enumerable:false}
+	 });
+
+	 Object.defineProperty(Object.prototype,
+	 	"extend",
+	 	{
+	 		writable:true,
+	 		configurable:true,
+	 		value: function(o){
+	 			var names = Object.getOwnPropertyNames(o);
+	 			for(var i=0;i<names.length;i++){
+	 				if(names[i] in this){ continue;}
+	 				var dec = Object.getOwnPropertyDescriptor(o,names[i]);
+	 				Object.defineProperty(this,names[i],dec);
+	 			}
+	 				// return 1;
+	 		}
+
+	 	});
+
+	 console.log(a.extend(b));  //underfined 因为extend方法上没设返回值
+	 console.log(a);
+	 console.log(Object.getOwnPropertyDescriptor(a,'z'));
+	 // console.log(b.isPrototypeOf(a));  //false
+	 // console.log(Object.prototype.isPrototypeOf(a));  //true
+	 // console.log(b.z);
+	 // console.log(b.extend);
+	 // console.log(b);
+	 // console.log(Object.prototype);
+
+	 // console.log(Object.prototype.toString.call(a.x));
+	 // console.log(a.constructor.prototype);
+
+/*	 阻止对象的可扩展性，仅限新增属性
+
+	 console.log(Object.isExtensible(a));  //true;
+	 Object.preventExtensions(a);  //把a设为不可扩展的
+	 a.zz = 23
+	 console.log(a.zz)*/
+
+	/*  阻止属性以及属性值的配置。
+
+	 Object.seal(a);
+	 console.log(Object.isSealed(a));
+	 Object.defineProperty(a,"y",{value:10,configurable:true});
+	 // console.log(a.y);
+	 console.log(Object.getOwnPropertyDescriptor(a,"y")); */ //因为上面的seal使得对象被封闭，不能设置属性的特性了。
+
+
+
+	 // var arr = new Array([1,2,3]);
+	 // console.log( arr.toLocaleString() );
+	 // console.log( arr.toString() );
+
+	 var date = new Date(2016, 8, 10, 11, 57);
+	// var date = new Date(2013, 6, 21, 13, 12, 59, 231);
+	console.log( date.toLocaleString() );
+	console.log( date.toString() );
+
+
+}
+</script>
+</head>
+<body>
+	
+</body>
+</html>

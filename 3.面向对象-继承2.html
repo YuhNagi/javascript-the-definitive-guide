@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>js权威指南</title>
+<script>
+
+
+window.onload = function(){
+
+/*var o = {x:1, y:2, z:3, 
+	get j(){  return 4;	},
+
+	set j(n){  if(n>this.y ){ j = n; } return n; }
+
+};
+
+function inherit(p){
+
+	if(p === null){
+		throw new Error();
+	}
+	else if(Object.create){
+		return Object.create(p);
+	}
+		var t = typeof p;
+	if(t !='Object' || t != 'function'){
+			throw new Error('类型错误');
+	}
+	else{
+		function f(){};
+		f.prototype = p;
+		return new f();
+
+	}
+
+}
+
+var o1 = inherit(o);*/
+
+/*for( p in o1){
+	if( !o.hasOwnProperty(p)){ continue;}
+	if( typeof o[p] == 'function'){ continue; }
+	console.log(o[p]);
+}*/
+/*Object.defineProperty(o,'k',{ get: function(){return 10;} } );
+console.log(Object.getOwnPropertyDescriptor(o,'j'));
+console.log(Object.getOwnPropertyDescriptor(o,'k'));
+console.log(o.k);*/
+
+// o1.x = 10;
+// console.log(o1.x);
+// console.log(o.x);
+// console.log(o.j);
+// console.log(o.j = 3);
+// console.log(typeof inherit(o));
+
+
+//---------------------可以复制属性特性------------------------
+/*var a = {x:1};
+var b = {x:12, y:13, z:14};
+Object.defineProperty(b,"y",{
+		enumerable:true,
+		configurable:true,
+		writable:false,
+});
+
+Object.defineProperty(Object.prototype,'extend',{
+	enumerable:true,
+	configurable:true,
+	writable:false,
+	value: function(o){
+		var names = Object.getOwnPropertyNames(o); //获取到o对象上所有自有属性，包括不可枚举的。
+		for(var i=0;i<names.length;i++){
+			if( names[i] in this){ continue; }
+				var dec = Object.getOwnPropertyDescriptor(o,names[i]);
+				Object.defineProperty(this,names[i],dec);	
+			}
+		}
+});
+
+a.extend(b)
+console.log(Object.getOwnPropertyDescriptor(a,'y'));
+
+Object.defineProperty(a,'y',{
+	writable:true
+});
+a.y = 3;
+console.log(a.y);
+*/
+
+
+
+//----------=-----------
+/*var date = new Date();
+var arr = new Array(1,'b');
+
+console.log(JSON.stringify(date));
+var s = JSON.stringify(date);
+console.log(JSON.parse(s));
+
+console.log(date.toString());
+console.log(date.toLocaleString());
+console.log(date.valueOf());
+console.log(arr.valueOf());*/
+
+var b = {x:12, y:13, z:14};
+var keys = Object.keys(b);
+var values = [];
+
+for(var i=0;i<keys.length;i++){
+	var key = keys[i];
+	values[i] = b[key];
+}
+
+console.log(values);
+
+
+
+
+
+};
+</script>
+</head>
+<body>
+	
+</body>
+</html>

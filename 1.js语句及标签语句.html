@@ -1,0 +1,213 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8' />
+	<title>js语句</title>
+<style>
+
+</style>
+
+<script>
+// 'use strict'
+window.onload = function(){
+
+
+//--------------------------标签语句---------------------------------------
+	// console.log(myloop);
+/* { // 语句块
+     标签1: function(){return "hehe"}
+}*/
+
+// console.log();
+
+// 语句块
+/*{ 
+    标签1: function test1(){return "hehe"};
+    标签2: var test2 = function(){return "hehe"};
+}
+
+document.write("Entering the loop!<br /> ");
+outerloop:   // This is the label name
+for (var i = 0; i < 3; i++)
+{
+   document.write("Outerloop: " + i + "<br />");
+   for (var j = 0; j < 5; j++)
+   {
+      if (j == 3){
+         break outerloop;
+      }
+      document.write("Innerloop: " + j + "<br />");
+   }
+}
+document.write("Exiting the loop!<br /> ");*/
+
+
+
+//-------------------循环语句while  try/catch/finally-------------------
+
+//----------------while------------------------
+/*for(var p in 'pp'){
+  console.log(p[p]);
+}*/
+/*var i=10;
+myloop:while(i-->0){
+    console.log("myloop"+ i);
+    if(i%3 == 0){
+        continue myloop;
+    }
+}*/
+
+
+//----------------try/catch/finall------------------------
+
+/*try{
+	// alert(1);
+	return console.log('a');
+}finally{
+	// alert(2);
+	return console.log('b');
+
+}*/
+
+
+//-------------------------------continue--------------
+/*for(var i=0;i<5;i++){
+	if(i==3){
+		continue;
+	}
+
+	console.log('for :' + i);
+}
+
+
+var j=0;
+while(j<5){
+	j++;
+	if(j==3){
+		continue;
+	}
+	//j++; 放这的话会得不到执行而导致死循环。
+	console.log('while :' + j);
+}
+
+
+//-------------------------------do~while--------------
+var k=0;
+do{
+	if(k == 3){
+		continue;
+	}
+	console.log('do :' + k);
+}while(k++<5){
+
+}*/
+
+
+// prompt('请输入密码');
+
+
+/*    try{
+        function demoFn1(){
+            alert("函数调用成功！");
+        }
+        demoFn1();
+    }catch(e){
+        alert("函数调用失败！");
+    }
+    try{
+        demoFn2();
+        var demoFn2 = function(){
+            alert("函数调用成功！");
+        }
+    }catch(e){
+        alert("函数调用失败！");
+    }*/
+
+
+
+//----------------------------函数声明和函数表达式的区别-------------
+ /*   var fn = function(){
+    	console.log(1);
+    }
+
+    function fn1(x){
+    	if(x == undefined){
+    		debugger;
+    	}
+    	console.log(x);
+    }
+    fn1(1);*/
+    // console.log(typeof fn);
+
+/*for(i = 1; i<5; i++) {
+   // Print i to the Output window.
+   console.log("loop index is " + i);
+   // Wait for user to resume.
+   debugger;
+}*/
+
+
+
+
+
+//----------------------------严格模式------------------------------
+/*var o = {'x':2};
+
+(
+function(){
+	// 'use strict'
+	with(o){
+		x =1;
+	}	
+}
+)
+();*/
+
+// fn2();
+
+
+// console.log(o.x);
+// console.log(({toString:function(){return "hehe"}}) + "...");
+// console.log( 1 + {valueOf:function a(){return 1}} );
+
+
+
+//-------------------------------arguments.callee/caller属性--------------
+function parentCheck() {
+    check("");
+    function check() {
+        subCheck();
+        function subCheck() {
+            console.log(arguments.caller);
+            console.log(subCheck.caller)
+        }
+    }
+}
+parentCheck();
+
+
+
+
+function a(){
+	b();
+	function b(){
+		console.log(arguments.caller);
+		// alert(1);
+	}
+}
+a();
+
+
+
+
+
+
+
+};
+</script>
+</head>
+<body>
+
+</body>
+</html>
